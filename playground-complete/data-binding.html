@@ -10,13 +10,16 @@
   <div id="app">
     <p v-bind:id="uuid" v-bind:class="name">{{ num }}</p>
     <!-- <p id="abc1234">{{ num }}</p> -->
+    <!--데이터바인딩{{}}-->
     <p>{{ doubleNum }}</p>
+    <!--뷰 디렉티브 v- -->
     <div v-if="loading">
       Loading...
     </div>
     <div v-else>
       test user has been logged in
     </div>
+    <!--if는 돔 아예 제거, show는css로 안보이게만 display none-->
     <div v-show="loading">
       Loading...
     </div>
@@ -36,6 +39,7 @@
         loading: true,
         message: ''
       },
+      //계산된 속성 - computed
       computed: {
         doubleNum: function() {
           return this.num * 2;

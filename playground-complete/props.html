@@ -8,33 +8,42 @@
 </head>
 <body>
   <div id="app">
+    <!-- 내려가는 데이터는 props, 올라가는 건 event -->
     <!-- <app-header v-bind:프롭스 속성 이름="상위 컴포넌트의 데이터 이름"></app-header> -->
     <app-header v-bind:propsdata="message"></app-header>
     <app-content v-bind:propsdata="num"></app-content>
+    <app-footer v-bind:propsdata="num2"></app-footer>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script>
     var appHeader = {
       template: '<h1>{{ propsdata }}</h1>',
-      props: ['propsdata']
+      props: ['propsdata'] //프롭스 속성 이름
     }
     var appContent = {
       template: '<div>{{ propsdata }}</div>',
       props: ['propsdata']
+    }
+    var appFooter = {
+      template: '<div>{{ propsdata }}</div>',
+      props:['propsdata']
     }
 
     new Vue({
       el: '#app',
       components: {
         'app-header': appHeader,
-        'app-content': appContent
+        'app-content': appContent,
+        'app-footer': appFooter
       },
       data: {
-        message: 'hi',
-        num: 10
+        message: 'hi hello', //상위 컴포넌트 데이터 이름
+        num: 10,
+        num2: 20
       }
     })
+
   </script>
 </body>
 </html>

@@ -9,9 +9,12 @@
 <body>
   <div id="app">
     <div>
+      <!--링크를 이용한 페이지 이동-->
       <router-link to="/login">Login</router-link>
       <router-link to="/main">Main</router-link>
+      <router-link to="/about">About</router-link>
     </div>
+    <!--라우터 뷰에 컴포넌트 내용이 담김(라우터가 표시되는 영역)-->
     <router-view></router-view>
   </div>
 
@@ -24,9 +27,13 @@
     var MainComponent = {
       template: '<div>main</div>'
     }
+    var AboutComponent = {
+      template: '<div>about</div>'
+    }
 
     var router = new VueRouter({
-      // 페이지의 라우팅 정보      
+      // 페이지의 라우팅 정보
+      //배열 [{객체},{객체}]      
       routes: [
         // 로그인 페이지 정보
         {
@@ -40,6 +47,10 @@
         {
           path: '/main',
           component: MainComponent
+        },
+        {
+          path:'/about',
+          component: AboutComponent
         }
       ]
     });
