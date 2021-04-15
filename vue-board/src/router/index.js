@@ -3,6 +3,9 @@ import Router from 'vue-router'
 import Read from '@/components/Read'
 import Create from '@/components/Create'
 import Detail from '@/components/Detail'
+//bbs
+import Board from '@/components/Board'
+// import { component } from 'vue/types/umd'
 
 Vue.use(Router)
 
@@ -23,6 +26,12 @@ export default new Router({
       path: '/detail/:contentId',
       name: 'Detail',
       component: Detail
-    }
+    },
+    //bbs
+    {
+      path: '/board/free',
+      name: 'Board',
+      component: Board
+    },
   ]
 })
