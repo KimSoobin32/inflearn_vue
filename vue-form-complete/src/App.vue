@@ -1,6 +1,7 @@
 <template>
   <div>
     <form v-on:submit.prevent="submitForm">
+      
       <div>
         <label for="username">id: </label>
         <!--v-model username에 입력한 값이 바로 적용 됨-->
@@ -11,6 +12,8 @@
         <input id="password" type="password" v-model="password">
       </div>
       <button type="submit">login</button>
+      <button @click="test">test</button>
+      <button @click="postTest">postTest</button>
     </form>
   </div>
 </template>
@@ -43,6 +46,35 @@ export default {
       .catch(function(error){
         console.log(error);
       });
+    },
+    test(){
+      
+      axios
+        .get("https://reqres.in/api/users?page=2")
+        .then(res => {
+          console.log(res)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+        .then(()=>{
+          console.log("test")
+        })
+    },
+    postTest(){
+      axios
+      //주소
+      .post("https://reqres.in/api/register", {
+        //body
+        "email": "eve.holt@reqres.in",
+        "password": "pistol"
+      })
+      .then(res => {
+        console.log(res)
+      })
+      .catch(err => {
+        console.log(err)
+      })
     }
   }
 }
