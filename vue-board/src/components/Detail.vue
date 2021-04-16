@@ -20,7 +20,7 @@ export default {
         }
     },
     methods: {
-        //배열.splice(인덱스,1); 리턴값은 삭제도니 배열 요소이다. 배열자체는 삭제한 요소를 제거한 요소들로만 구성되어 있다
+        //배열.splice(인덱스,1); 리턴값은 삭제된 배열 요소이다. 배열자체는 삭제한 요소를 제거한 요소들로만 구성되어 있다
         deleteData(){
             data.splice(this.index, 1)
             this.$router.push({

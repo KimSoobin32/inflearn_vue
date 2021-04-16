@@ -5,6 +5,8 @@ import Create from '@/components/Create'
 import Detail from '@/components/Detail'
 //bbs
 import Board from '@/components/Board'
+import ContentDetail from '@/components/ContentDetail';
+import Create2 from '@/components/Create2';
 // import { component } from 'vue/types/umd'
 
 Vue.use(Router)
@@ -33,5 +35,15 @@ export default new Router({
       name: 'Board',
       component: Board
     },
+    {
+      path: '/board/free/detail/:contentId',
+      name: 'ContentDetail',
+      component: ContentDetail
+    },
+    {
+      path: '/board/free/create2/:contentId?',
+      name: 'Create2',
+      component: Create2
+    }
   ]
 })
