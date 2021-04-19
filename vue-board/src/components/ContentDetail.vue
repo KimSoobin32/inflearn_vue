@@ -26,20 +26,23 @@
         <b-button variant="primary" @click="updateData">수정</b-button>
         <b-button variant="success" @click="deleteData">삭제</b-button>
       </div>
-      <!-- <div class="content-detail-comment">
+      <div class="content-detail-comment">
+        <!-- contentId를 props로 넘겨 줌 -->
+        <!-- 부모컴포넌트가 자식 컴포넌트에게 필요한 정보를 전달-->
+        <!-- 자식 : 이게필요한데="이걸넘겨주겠다" -->
         <CommentList :contentId="contentId"/>
-      </div> -->
+      </div>
     </b-card>
   </div>
 </template>
 
 <script>
 import data from "@/data";
-// import CommentList from "./CommentList";
+import CommentList from "./CommentList";
 export default {
   name: "ContentDetail",
   components: {
-    // CommentList,
+    CommentList,
   },
   data() {
     const contentId = Number(this.$route.params.contentId);
