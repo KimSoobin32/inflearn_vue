@@ -7,7 +7,7 @@
       </div>
       <div class="comment-list-item-context">{{commentObj.context}}</div>
       <div class="comment-list-item-button">
-        <b-button variant="info">수정</b-button>
+        <b-button variant="info" @click="updateData">수정</b-button>
         <b-button variant="info" @click="deleteData">삭제</b-button>
         <b-button variant="info" @click="subCommentToggle">덧글 달기</b-button>
       </div>
@@ -33,7 +33,7 @@
         <div class="comment-list-item-context">{{item.context}}</div>
         <div class="comment-list-item-button">
           <b-button variant="info">수정</b-button>
-          <b-button variant="info">삭제</b-button>
+          <b-button variant="info" @click="deleteSub">삭제</b-button>
         </div>
       </div>
     </template>
@@ -47,6 +47,7 @@ export default {
   props: {
     commentObj: Object,
     reloadComments: Function,
+    reloadSubComments: Function,
   },
   components: {
     CommentCreate
@@ -88,8 +89,32 @@ export default {
         console.log(this.commentObj);
         console.log(data.Comment);
         this.reloadComments();
-    
-      
+    },
+    deleteSub() {
+      const subcomment_index = data.SubComment.findIndex(item => item.subcomment_id === this.commentObj.comment_id);
+       //배열.splice(인덱스,1); 리턴값은 삭제된 배열 요소이다. 배열자체는 삭제한 요소를 제거한 요소들로만 구성
+        data.SubComment.splice(subcomment_index, 1)
+        console.log(this.commentObj);
+        console.log(data.SubComment);
+        this.reloadSubComments();
+    },
+    updateData() {
+    //   const comment_index = data.Comment.findIndex(item => item.comment_id === this.commentObj.comment_id);
+    //   this.$router.push({
+    //     path: `/board/free/detail/${comment_index}`
+    //   })
+    const comment_id = data.Comment[data.Comment.length - 1].comment_id;
+      data.Comment.push({
+        comment_id: comment_id,
+        user_id: 1,
+        content_id: this.contentId,
+        context: this.context,
+        created_at: "2019-04-19 14:11:11",
+        updated_at: null
+      });
+      this.reloadComments();
+      this.subCommentToggle();
+      this.context = "";
     },
   }
 };
