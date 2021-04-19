@@ -1,7 +1,7 @@
 <template>
   <div>
     <div :key="item.comment_id" v-for="item in comments">
-      <CommentListItem :commentObj="item"/>
+      <CommentListItem :commentObj="item" :reloadComments="reloadComments"/>
     </div>
     <CommentCreate :contentId="contentId" :reloadComments="reloadComments"/>
   </div>

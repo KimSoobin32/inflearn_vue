@@ -8,7 +8,7 @@
       <div class="comment-list-item-context">{{commentObj.context}}</div>
       <div class="comment-list-item-button">
         <b-button variant="info">수정</b-button>
-        <b-button variant="info">삭제</b-button>
+        <b-button variant="info" @click="deleteData">삭제</b-button>
         <b-button variant="info" @click="subCommentToggle">덧글 달기</b-button>
       </div>
     </div>
@@ -45,7 +45,8 @@ import CommentCreate from "./CommentCreate";
 export default {
   name: "CommentListItem",
   props: {
-    commentObj: Object
+    commentObj: Object,
+    reloadComments: Function,
   },
   components: {
     CommentCreate
@@ -79,7 +80,17 @@ export default {
           item => item.user_id === subCommentItem.user_id
         )[0].name 
       }));
-    }
+    },
+    deleteData() {
+      const comment_index = data.Comment.findIndex(item => item.comment_id === this.commentObj.comment_id);
+       //배열.splice(인덱스,1); 리턴값은 삭제된 배열 요소이다. 배열자체는 삭제한 요소를 제거한 요소들로만 구성
+        data.Comment.splice(comment_index, 1)
+        console.log(this.commentObj);
+        console.log(data.Comment);
+        this.reloadComments();
+    
+      
+    },
   }
 };
 </script>
